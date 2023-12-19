@@ -1,7 +1,9 @@
+
 import { login } from '../functions/login';
 import { useEffect, useState } from 'react';
 
 function LoginForm() {
+// eslint-disable-next-line no-unused-vars
 const [jwt, setJwt] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
