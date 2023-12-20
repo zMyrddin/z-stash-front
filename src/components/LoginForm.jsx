@@ -1,42 +1,26 @@
+/* eslint-disable no-unused-vars */
 
-import { login } from '../functions/login';
+import { useUser } from '../context/UserContext';
+import login  from '../functions/login';
 import { useEffect, useState } from 'react';
 
 function LoginForm() {
-// eslint-disable-next-line no-unused-vars
-const [jwt, setJwt] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const { login: userLogin } = useUser();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-  useEffect(() => {
-    console.log(`JWT Valuie is: \n${jwt}`);
-  }, [jwt]);
+  const handleLogin = async () => {
+    const result = await login(username, password);
+    // Assuming your login function returns user data upon successful login
+    if (result.success) {
+      userLogin(result.user);
+    }
+  };
 
   return (
     <div className="App">
-      <label data-testid="zstash">Username:</label>
-      <input 
-        type="text" 
-        name="usernameInput" 
-        id="usernameInput" 
-        value={username} 
-        onChange={(event) => setUsername(event.target.value)} 
-      />
-
-      <label>Password:</label>
-      <input 
-        type="password" 
-        name="passwordInput" 
-        id="passwordInput" 
-        value={password} 
-        onChange={(event) => setPassword(event.target.value)} 
-      />
-      
-      <button onClick={() => {login(username, password)}}>
-        Log In
-      </button>
-    
-
+      {/* Your form inputs */}
+      <button onClick={handleLogin}>Log In</button>
     </div>
   );
 }
