@@ -1,7 +1,9 @@
+// login.js
 import { useAuth } from "../context/AuthContext";
 
-
 async function login(username, password) {
+  const auth = useAuth();
+
   console.log(username, password);
 
   let result = await fetch(
@@ -19,12 +21,10 @@ async function login(username, password) {
 
   console.log(data);
 
-  const { login } = useAuth();
-
   if (data.jwt) {
     // Assuming the server sends a JWT and user data upon successful login
     const { jwt, user } = data;
-    login(jwt, user);
+    auth.login(jwt, user);
   }
 
   return data;

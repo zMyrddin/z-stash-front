@@ -10,10 +10,13 @@ return (
   <div>  
     <RedirectHomeButton />
     <LoginForm />
+<<<<<<< HEAD
     <Routes>
       <Route path="/stashlist" element={<StashList />} />    
     </Routes>
     <Navbar />
+=======
+>>>>>>> parent of cabce16 (fix: Navbar unused bar added)
   </div>
 
 
