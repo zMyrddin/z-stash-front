@@ -1,26 +1,33 @@
-import React, { useState } from 'react';
-// import './NavbarStyle.css';
+import { NavLink } from "react-router-dom";
 
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
 
-  return (
-    <header className="header">
-      <div className="logo">NAVBAR SHOULD BE IN MIDDLE</div>
-      <nav className={`nav-links ${isOpen ? 'open' : ''}`}>
-        <a href="/">Home</a>
-        <a href="/about">List</a>
-      </nav>
-      <div className="menu-toggle" onClick={toggleMenu}>
-        <div className={`bar ${isOpen ? 'open' : ''}`}></div>
-        <div className={`bar ${isOpen ? 'open' : ''}`}></div>
-      </div>
-    </header>
-  );
-};
-
-export default Navbar;
+export default function Navbar(props){
+    return (
+        <nav>
+            <h3>Find your way here!</h3>
+                <ul>
+                    <li>
+                      <NavLink to="/" style={({isActive}) => isActive ? {color: "red"} : undefined} >
+                        Home
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/stash" style={({isActive}) => isActive ? {color: "red"} : undefined} >
+                        Stash
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/user" style={({isActive}) => isActive ? {color: "red"} : undefined} >
+                        Users
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/user/login" style={({isActive}) => isActive ? {color: "red"} : undefined} >
+                        Login
+                      </NavLink>
+                    </li>
+                </ul>
+        </nav>
+    )
+}

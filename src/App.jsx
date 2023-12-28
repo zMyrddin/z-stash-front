@@ -1,11 +1,12 @@
-import Navbar from './components/Navbar';
-import LoginForm from './components/LoginForm';
+import Header from './components/Header';
+
 
 function App() {
 return (
+
   <div>  
-    <LoginForm />
-    <Navbar />
+    <Header />
+
   </div>
 
 
