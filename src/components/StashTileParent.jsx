@@ -33,11 +33,11 @@ export default class StashTileParent extends Component {
 
       // Update the state with the fetched data
       this.setState({
-        stashName: data.stashName,
-        location: data.location,
-        landmarks: data.landmarks,
-        hostileSighting: data.hostileSighting,
-        notes: data.notes,
+        stashName: data.result.stashName,
+        location: data.result.location,
+        landmarks: data.result.landmarks,
+        hostileSighting: data.result.hostileSighting,
+        notes: data.result.notes
       });
       console.log('Updated state:', this.state);
     } catch (error) {

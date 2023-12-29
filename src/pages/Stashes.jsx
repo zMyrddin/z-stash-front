@@ -4,8 +4,6 @@ export default function Stashes(props){
     return(
         <div>
             <StashTileParent />
-            <StashTileParent />
-            <StashTileParent />
         </div>
     )
 };
