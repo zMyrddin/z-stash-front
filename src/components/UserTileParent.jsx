@@ -21,10 +21,9 @@ export default class UserTileParent extends Component {
   async fetchStashData() {
     try {
       const token = localStorage.getItem("token");
-      
+
       const response = await fetch(
-        // process.env.REACT_APP_BACKEND_URL + "/users"
-        "http://localhost:3001/users",
+        process.env.REACT_APP_BACKEND_URL + "/users",
         {
             method: "GET", // specify the HTTP method
             headers: {

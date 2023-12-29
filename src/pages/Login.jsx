@@ -19,9 +19,7 @@ const Login = () => {
 
     try {
         const response = await axios.post(
-            // `${process.env.REACT_APP_BACKEND_URL}/users/login`
-            "http://localhost:3001/users/login"
-            ,
+          process.env.REACT_APP_BACKEND_URL + "/users/login",
             {
                 username,
                 password,
