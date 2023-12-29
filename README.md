@@ -1,7 +1,7 @@
 Z-stash Front: https://github.com/zMyrddin/z-stash-front
 Z-stash Back: https://github.com/zMyrddin/z-stash-back
-
-
+Frontend deployment: https://marvelous-sprite-6b2d38.netlify.app/
+Backend deployment: https://z-stash-inventory-3629fb346e86.herokuapp.com
 
 
 ### Purpose
@@ -131,7 +131,23 @@ All simplified as well into Requirement numbers.
 ---
 
 
+### Testing screenshots
 
+More testing screenshots in the docs folder with a few below:
 
+Login through postman
 
+![Login through postman](/docs/login%20-%20postman.JPG "Login through postman")
+
+Creating a new user as an admin
+
+![Creating a new user with a valid token](/docs/postman%20create%20new%20user%20as%20admin.JPG "Creating a new user with a valid token")
+
+Updating user details as an admin
+
+![Updating user as an admin](/docs/postman%20updating%20user%20details%20as%20admin.JPG "Updating user as an admin")
+
+Creating a new stash entry using a valid token
+
+![Creating new stash entry with a valid token](/docs/postman%20create%20new%20entry%20with%20valid%20token.JPG "Creating a new stash entry using a valid token")
 
