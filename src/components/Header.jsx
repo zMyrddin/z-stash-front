@@ -1,50 +1,25 @@
-import React, { useState } from "react";
-import QuestionMarkIcon from "../images/question_mark_icon.png";
-import { Route, Routes, BrowserRouter, Navigate } from "react-router-dom";
+import React from "react";
+
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 import HomePage from "../pages/Home";
 import Navbar from "./Navbar";
-import LoginForm from "./LoginForm";
+import Login from "../pages/Login";
+import Stashes from "../pages/Stashes";
+
 
 function Header() {
-  const [isLoginFormOpen, setIsLoginFormOpen] = useState(false);
-
-  // Example user state for authentication
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-    setIsLoginFormOpen(false);
-  };
-
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-  };
-
   return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", height: "100vh", padding: 5 }}>
-      <img
-        className="question-mark"
-        src={QuestionMarkIcon}
-        alt="Question Mark"
-        style={{ width: 25, height: 25 }}
-        onClick={() => setIsLoginFormOpen(!isLoginFormOpen)}
-      />
-
-      {isLoginFormOpen && !isLoggedIn && <LoginForm onLogin={handleLogin} />}
-
-      {isLoggedIn ? (
-        <button onClick={handleLogout}>Logout</button>
-      ) : (
+    <div>
         <BrowserRouter>
           <Navbar />
           <Routes>
-            <Route
-              path="/"
-              element={isLoggedIn ? <HomePage /> : <Navigate to="/" />}
-            />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/stash" element={<Stashes />} />
+            <Route path="/users" element={<HomePage />} />
+            <Route path="/user/login" element={<Login />} />
           </Routes>
+
         </BrowserRouter>
-      )}
     </div>
   );
 }
