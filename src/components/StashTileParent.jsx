@@ -24,7 +24,7 @@ export default class StashTileParent extends Component {
   async fetchStashData() {
     try {
       const response = await fetch(
-        // process.env.REACT_APP_BACKEND_URL + "/stash/"
+        // process.env.REACT_APP_BACKEND_URL + "/stash"
         "http://localhost:3001/stash"
         );
       const data = await response.json();

@@ -14,5 +14,3 @@ export default function StashTileDisplay(props){
         </div>
     )
 }
-
-// not used atm

@@ -5,6 +5,7 @@ import HomePage from "../pages/Home";
 import Navbar from "./Navbar";
 import Login from "../pages/Login";
 import Stashes from "../pages/Stashes";
+import Users from "../pages/Users";
 
 
 function Header() {
@@ -15,7 +16,7 @@ function Header() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/stash" element={<Stashes />} />
-            <Route path="/users" element={<HomePage />} />
+            <Route path="/users" element={<Users />} />
             <Route path="/user/login" element={<Login />} />
           </Routes>
 

@@ -3,12 +3,14 @@ import { AuthProvider } from './context/Authcontext';
 
 
 
+
 function App() {
 return (
   <AuthProvider>
 
       <div>  
         <Header />
+
 
       </div>
 
