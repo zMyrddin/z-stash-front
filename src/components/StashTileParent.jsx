@@ -23,9 +23,18 @@ export default class StashTileParent extends Component {
 
   async fetchStashData() {
     try {
+      const token = localStorage.getItem("token");
+      
       const response = await fetch(
         // process.env.REACT_APP_BACKEND_URL + "/stash"
-        "http://localhost:3001/stash"
+        "http://localhost:3001/stash",
+        {
+          method: "GET", // specify the HTTP method
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
+          },
+      }
         );
       const data = await response.json();
 
