@@ -1,16 +1,84 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import StashTileDisplay from "./StashTileDisplay";
+import StashTileForm from "./StashTileForm";
 
 export default class StashTileParent extends Component {
-    constructor(){
-        super();
-    }
+  constructor(props) {
+    super(props);
 
-    render(){
-        return(
-            <div>
-                <StashTileDisplay></StashTileDisplay>
-            </div>
-        )
+    this.state = {
+      editMode: false,
+      stashName: "name",
+      location: "location",
+      landmarks: "landmark",
+      hostileSighting: "no please",
+      notes: "none",
+    };
+  }
+
+  componentDidMount() {
+    // Fetch data when the component mounts
+    this.fetchStashData();
+  }
+
+  async fetchStashData() {
+    try {
+      const response = await fetch(
+        // process.env.REACT_APP_BACKEND_URL + "/stash/"
+        "http://localhost:3001/stash"
+        );
+      const data = await response.json();
+
+      console.log(data);
+
+      // Update the state with the fetched data
+      this.setState({
+        stashName: data.stashName,
+        location: data.location,
+        landmarks: data.landmarks,
+        hostileSighting: data.hostileSighting,
+        notes: data.notes,
+      });
+      console.log('Updated state:', this.state);
+    } catch (error) {
+      console.error('Error fetching stash data:', error);
     }
+  }
+
+  updateState = (stateKeyId, newStateValue) => {
+    if (Object.keys(this.state).includes(stateKeyId)) {
+      this.setState({
+        [stateKeyId]: newStateValue,
+      });
+    } else {
+      console.warn("Incorrect state was almost created or edited.");
+    }
+  };
+
+  render() {
+    if (this.state.editMode) {
+      return (
+        <StashTileForm
+          stashName={this.state.stashName}
+          location={this.state.location}
+          landmarks={this.state.landmarks}
+          hostileSighting={this.state.hostileSighting}
+          notes={this.state.notes}
+          setParentState={this.updateState}
+        />
+      );
+    } else {
+      return (
+        <div>
+          <StashTileDisplay
+            stashName={this.state.stashName}
+            location={this.state.location}
+            landmarks={this.state.landmarks}
+            hostileSighting={this.state.hostileSighting}
+            notes={this.state.notes}
+          />
+        </div>
+      );
+    }
+  }
 }

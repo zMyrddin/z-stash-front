@@ -18,7 +18,7 @@ export default function Navbar(props){
                       </NavLink>
                     </li>
                     <li>
-                      <NavLink to="/user" style={({isActive}) => isActive ? {color: "red"} : undefined} >
+                      <NavLink to="/users" style={({isActive}) => isActive ? {color: "red"} : undefined} >
                         Users
                       </NavLink>
                     </li>
