@@ -32,7 +32,8 @@ const Login = () => {
       
 
       localStorage.setItem("token", data.jwt);
-      localStorage.setItem("userId", data._id);
+      localStorage.setItem("userId", data.userId);
+      localStorage.setItem("userRole", data.userRole);
       localStorage.setItem("username", data.username); 
       console.log("Stored token:", data.jwt);
       setMessage("Welcome "+data.username); 

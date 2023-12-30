@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import StashTileDisplay from "./StashTileDisplay";
-import StashTileForm from "./StashTileForm";
+import StashTileForm from "../components/StashTileForm";
 
 export default class StashTileParent extends Component {
   constructor(props) {

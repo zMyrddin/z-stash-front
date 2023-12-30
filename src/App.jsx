@@ -1,7 +1,7 @@
 import Header from './components/Header';
 import { AuthProvider } from './context/Authcontext';
 // import Homepage from './pages/Home';
-import FireLogo from "./images/Firelogov2.png";
+import FireLogo from "./images/Firefly.png";
 
 
 
@@ -11,7 +11,12 @@ return (
   <AuthProvider>
 
       <div>  
-      <img className="fire-logo" src={FireLogo} alt={"Fire Logo"}/>
+        <img
+          className="fire-logo"
+          src={FireLogo}
+          alt={"Fire Logo"}
+          style={{ width: "100px", height: "100px" }}
+        />
         <Header />
 
 

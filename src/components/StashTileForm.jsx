@@ -1,69 +1,93 @@
-import { Component } from "react";
-
+import React, { Component } from "react";
 
 export default class StashTileForm extends Component {
-	handleChangeInput = (event) => {
-		// pass in the form input data 
-		// call the parent setState function 
+  handleChangeInput = (event) => {
+    // pass in the form input data
+    // call the parent setState function
+    this.props.setParentState(event.target.name, event.target.value);
+  };
 
-		this.props.setParentState(event.target.name, event.target.value);
-	}
+  handleSubmit = (event) => {
+    event.preventDefault();
 
-	render(){
-		return(
-			<form>
-                <label htmlFor="stashName" >Name:</label>
-				<input type="text" stashName="stashName" id="nameInput" 
-				value={this.props.stashName} 
-				onChange={this.handleChangeInput}
-				/>
+    // Determine whether to create or update based on isEditMode
+    if (this.props.isEditMode) {
+      // Perform update action
+      this.props.handleUpdate();
+    } else {
+      // Perform create action
+      this.props.handleCreate();
+    }
+  };
 
-				<br /> 
+  handleCancel = () => {
+    // Handle cancel action
+    this.props.handleCancel();
+  };
 
-				<label htmlFor="location">Location:</label>
-				<input 
-					type="text"
-					name="location"
-					id="locationInput"
-					value={this.props.location}
-					onChange={this.handleChangeInput}
-				/>
+  render() {
+    const { isEditMode, stashName, location, landmarks, hostileSighting, notes } = this.props;
 
-                <br /> 
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <label htmlFor="stashName">Name:</label>
+        <input
+          type="text"
+          name="stashName"
+          id="nameInput"
+          value={stashName}
+          onChange={this.handleChangeInput}
+        />
 
-                <label htmlFor="landmarks">Landmarks:</label>
-                <input 
-                    type="text"
-                    name="landmarks"
-                    id="landmarksInput"
-                    value={this.props.landmarks}
-                    onChange={this.handleChangeInput}
-                />
+        <br />
 
-                
-                <br /> 
+        <label htmlFor="location">Location:</label>
+        <input
+          type="text"
+          name="location"
+          id="locationInput"
+          value={location}
+          onChange={this.handleChangeInput}
+        />
 
-                <label htmlFor="hostileSighting">Hostiles:</label>
-                <input 
-                    type="text"
-                    name="hostileSighting"
-                    id="hostileSightingInput"
-                    value={this.props.hostileSighting}
-                    onChange={this.handleChangeInput}
-                />
+        <br />
 
-                <br /> 
+        <label htmlFor="landmarks">Landmarks:</label>
+        <input
+          type="text"
+          name="landmarks"
+          id="landmarksInput"
+          value={landmarks}
+          onChange={this.handleChangeInput}
+        />
 
-                <label htmlFor="notes">Notes:</label>
-                <input 
-                    type="text"
-                    name="notes"
-                    id="notesInput"
-                    value={this.props.notes}
-                    onChange={this.handleChangeInput}
-                />
+        <br />
 
-			</form>
-		)
-	}
+        <label htmlFor="hostileSighting">Hostiles:</label>
+        <input
+          type="text"
+          name="hostileSighting"
+          id="hostileSightingInput"
+          value={hostileSighting}
+          onChange={this.handleChangeInput}
+        />
+
+        <br />
+
+        <label htmlFor="notes">Notes:</label>
+        <input
+          type="text"
+          name="notes"
+          id="notesInput"
+          value={notes}
+          onChange={this.handleChangeInput}
+        />
+
+        <br />
+
+        <button type="submit">{isEditMode ? 'Update' : 'Create'}</button>
+        {isEditMode && <button type="button" onClick={this.handleCancel}>Cancel</button>}
+      </form>
+    );
+  }
 }
