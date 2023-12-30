@@ -5,8 +5,9 @@ import HomePage from "../pages/Home";
 import Navbar from "./Navbar";
 import Login from "../pages/Login";
 import Stashes from "../pages/Stashes";
-import Users from "../pages/Users";
 import AddEntryPage from "../pages/AddEntry";
+import Users from "../pages/Users";
+import AddUserPage from "../pages/AddUser";
 
 
 function Header() {
@@ -19,6 +20,7 @@ function Header() {
             <Route path="/stash" element={<Stashes />} />
             <Route path="/users" element={<Users />} />
             <Route path="/user/login" element={<Login />} />
+            <Route path="/users/add" element={<AddUserPage />} />
             <Route path="/stashes/add" element={<AddEntryPage />} />
           </Routes>
 

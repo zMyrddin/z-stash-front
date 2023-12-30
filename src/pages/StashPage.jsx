@@ -85,6 +85,49 @@ const StashesPage = () => {
     }
   };
 
+  const handleCancel = () => {
+    // Handle cancel action
+    setIsEditMode(false);
+    setSelectedEntry({
+        stashName: "",
+        location: "",
+        landmarks: "",
+        hostileSighting: "",
+        notes: ""
+    });
+  };
+  
+  const handleDelete = async (entryId) => {
+    // Display a confirmation dialog before deleting the stash entry
+    const confirmDelete = window.confirm("Are you sure you want to delete this stash entry?");
+    if (confirmDelete) {
+      try {
+        const token = localStorage.getItem("token");
+
+        const response = await fetch(
+          `${process.env.REACT_APP_BACKEND_URL}/stash/${entryId}`,
+          {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        if (response.ok) {
+          console.log("Entry deleted successfully");
+          // Fetch updated stash data after deletion
+          fetchStashData();
+        } else {
+          console.error("Error deleting entry");
+        }
+      } catch (error) {
+        console.error("Error deleting entry:", error);
+      }
+    }
+  };
+  
   return (
     <div>
       <h1>Stashes</h1>
@@ -97,7 +140,7 @@ const StashesPage = () => {
           <p>Notes: {stash.notes}</p>
           <button onClick={() => handleEdit(stash)}>Edit</button>
           {/* Add a confirmation dialog for delete button */}
-          <button onClick={() => console.log("Delete entry:", stash)}>Delete</button>
+          <button onClick={() => handleDelete(stash._id)}>Delete</button>
         </div>
       ))}
       {/* Button to navigate to the AddEntryPage */}
@@ -117,6 +160,7 @@ const StashesPage = () => {
           }
           handleCreate={handleCreate}
           handleUpdate={handleUpdate}
+          handleCancel={handleCancel}
         />
       )}
     </div>

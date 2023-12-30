@@ -1,9 +1,9 @@
-import UserTileParent from "../components/UserTileParent";
+import UserPage from "./UserPage";
 
 export default function Stashes(props){
     return(
         <div>
-            <UserTileParent />
+            <UserPage />
         </div>
     )
 };

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import UserTileDisplay from "../components/UserTileDisplay";
-import UserTileForm from "./UserTileForm";
+import UserTileForm from "../components/UserTileForm";
 
 export default class UserTileParent extends Component {
   constructor(props) {

@@ -13,18 +13,15 @@ export default class StashTileForm extends Component {
     // Determine whether to create or update based on isEditMode
     if (this.props.isEditMode) {
       // Perform update action
-      // You may want to call a function passed through props for updating
       this.props.handleUpdate();
     } else {
       // Perform create action
-      // You may want to call a function passed through props for creating
       this.props.handleCreate();
     }
   };
 
   handleCancel = () => {
     // Handle cancel action
-    // You may want to call a function passed through props for canceling
     this.props.handleCancel();
   };
 

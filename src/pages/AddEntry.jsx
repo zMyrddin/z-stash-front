@@ -46,6 +46,17 @@ const AddEntryPage = () => {
     }
   };
 
+  const handleCancel = () => {
+    console.log("Cancel clicked");
+    // Use navigate to go back to the stash page
+    try {
+      navigate("/stash");
+      console.log("After navigation");
+    } catch (error) {
+      console.error("Error during navigation:", error);
+    }
+  };
+
   return (
     <div>
       <h1>Add New Entry</h1>
@@ -62,6 +73,7 @@ const AddEntryPage = () => {
         }
         handleCreate={handleCreate}
         handleUpdate={() => {}}
+        handleCancel={handleCancel}
       />
     </div>
   );
