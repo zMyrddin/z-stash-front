@@ -28,7 +28,7 @@ export default class StashTileParent extends Component {
       const response = await fetch(
         process.env.REACT_APP_BACKEND_URL + "/stash",
         {
-          method: "GET", // specify the HTTP method
+          method: "GET", 
           headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`,
